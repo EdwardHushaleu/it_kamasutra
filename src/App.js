@@ -11,7 +11,7 @@ import Profile from './components/Profile/Profile';
 
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
@@ -19,11 +19,11 @@ const App = () => {
         <Navbar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} /> {/*с версией react 6 синтаксис, поменялся , нужно ставить /.../*, также роуты поменялись*/}
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/dialogs/*" element={<Dialogs state = {props.state.dialogsPage} />} /> {/*с версией react 6 синтаксис, поменялся , нужно ставить /.../*, также роуты поменялись*/}
+            <Route path="/profile" element={<Profile state = {props.state.profilePage}/>} />
+            <Route path="/news/*" element={<News />} />
             <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Profile />} />
+            <Route path="/settings" element={<Music />} />
           </Routes>
         </div>
       </div>
@@ -33,3 +33,6 @@ const App = () => {
 };
 
 export default App;
+
+// <Route path="/dialogs/*" element={<Dialogs />} /> {/*с версией react 6 синтаксис, поменялся , нужно ставить /.../*, также роуты поменялись*/}
+// <Route path="/dialogs/*" render={ () => <Dialogs /> } />
